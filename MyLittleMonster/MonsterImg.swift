@@ -20,16 +20,24 @@ class MonsterImg: UIImageView {
         playIdleAnimation()
     }
     
+    var picID = ""
+    
     func playIdleAnimation() {
         
-        self.image = UIImage(named: "idle1.png")
+        if chosenCharacter == 1 {
+            picID = "hero"
+        } else if chosenCharacter == 2 {
+            picID = "rockman"
+        }
+        
+        self.image = UIImage(named: "\(picID)1.png")
         
         self.animationImages = nil
         
         var imageArray = [UIImage]()
         
         for (var x = 1; x <= 4; x++) {
-            let img = UIImage(named: "idle\(x).png")
+            let img = UIImage(named: "\(picID)\(x).png")
             imageArray.append(img!)
             
         }
@@ -42,14 +50,14 @@ class MonsterImg: UIImageView {
     
     func playDeathAnimation() {
         
-        self.image = UIImage(named: "dead5.png")
+        self.image = UIImage(named: "\(picID)dead5.png")
         
         self.animationImages = nil
         
         var imageArray = [UIImage]()
         
         for (var i = 1; i <= 5; i++) {
-            let img = UIImage(named: "dead\(i)")
+            let img = UIImage(named: "\(picID)dead\(i)")
             imageArray.append(img!)
         }
         
